@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title>Title</title>
+        <!-- import font -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <!-- import CSS-->
+        <link rel="stylesheet" href="styleSheet/styles.css">
+
+    </head>
+    <body>
+        <header>
+            <div>
+                <nav>
+                    <a href="registration.html">Rejestracja</a>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <form action="/user-panel.html" >
+                <div>
+                    <label for="user-name">nazwa użytkownika/e-mail:</label>
+                    <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" required>
+                </div>
+                <div>
+                    <label for="password">hasło:</label>
+                    <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" required>
+                </div>
+                <input type="submit" value="Zaloguj">
+            </form>
+        </main>
+    </body>
+</html>
