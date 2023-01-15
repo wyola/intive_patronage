@@ -2,6 +2,13 @@ fetch('https://api.npoint.io/38edf0c5f3eb9ac768bd')
   .then((response) => response.json())
   .then((data) => renderTransactions(data.transactions, data.transacationTypes)); // typo! -> transacAtionTypes
 
+const icons = {
+  1: 'assets/transaction-icons/green-arrow.png',
+  2: 'assets/transaction-icons/grocery.png',
+  3: 'assets/transaction-icons/salary.png',
+  4: 'assets/transaction-icons/red-arrow.png'
+}
+
 function renderTransactions(transactions, transactionTypes) {
   const tableBody = document.getElementsByTagName('tbody')[0];
 
@@ -14,7 +21,7 @@ function renderTransactions(transactions, transactionTypes) {
     dataRow.appendChild(dateCell);
 
     const iconCell = document.createElement('td');
-    iconCell.innerText = 'ikona' // TODO: find icons !!!
+    iconCell.innerHTML = `<img src="${icons[transaction.type]}" width="32px" height="32px" alt="${transactionTypes[transaction.type]}" >`
     dataRow.appendChild(iconCell);
 
     const descriptionCell = document.createElement('td');
