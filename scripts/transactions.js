@@ -17,10 +17,12 @@ function renderTransactions(transactions, transactionTypes) {
     tableBody.appendChild(dataRow);
 
     const dateCell = document.createElement('td');
+    dateCell.classList.add("hide-on-mobile");
     dateCell.innerText = transaction.date;
     dataRow.appendChild(dateCell);
 
     const iconCell = document.createElement('td');
+    iconCell.classList.add('transaction-icon')
     iconCell.innerHTML = `<img src="${icons[transaction.type]}" width="32px" height="32px" alt="${transactionTypes[transaction.type]}" >`
     dataRow.appendChild(iconCell);
 
@@ -33,6 +35,7 @@ function renderTransactions(transactions, transactionTypes) {
     dataRow.appendChild(amountCell);
 
     const balanceCell = document.createElement('td');
+    balanceCell.classList.add("hide-on-mobile");
     balanceCell.innerText = transaction.balance;
     dataRow.appendChild(balanceCell);
 
@@ -40,7 +43,7 @@ function renderTransactions(transactions, transactionTypes) {
     tableBody.appendChild(mobileRow);
 
     const mobileRowView = document.createElement('td');
-    mobileRow.setAttribute('colspan', 5);    
+    mobileRowView.colSpan = 5;    
     mobileRow.appendChild(mobileRowView);
 
     const mobileRowDate = document.createElement('div');

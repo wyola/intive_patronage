@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
         <!-- import CSS-->
         <link rel="stylesheet" href="styleSheet/styles.css">
+        <link rel="stylesheet" href="styleSheet/smallScreen.css" media="screen and (max-width: 768px)">
 
     </head>
     <body>
@@ -20,22 +21,23 @@
                 </nav>
             </div>
         </header>
-        <main>
-            <div class="content form-container">
-                <form action="/transactions.html">
-                    <div>
-                        <label for="user-name">nazwa użytkownika/email:</label>
-                        <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" required>
-                    </div>
-                    <div>
-                        <label for="password">hasło:</label>
-                        <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" required>
-                    </div>
-                    <div>
-                        <input type="submit" value="Zaloguj">
-                    </div>
-                </form>
+        <main class="content">
+            <div>
+                Zaloguj się
             </div>
+            <form action="/transactions.html">
+                <div>
+                    <label for="user-name">nazwa użytkownika/email:</label>
+                    <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" required>
+                </div>
+                <div>
+                    <label for="password">hasło:</label>
+                    <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" required>
+                </div>
+                <div>
+                    <input type="submit" value="Zaloguj">
+                </div>
+            </form>
         </main>
     </body>
 </html>

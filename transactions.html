@@ -10,29 +10,39 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
         <!-- import CSS-->
         <link rel="stylesheet" href="styleSheet/styles.css">
+        <link rel="stylesheet" href="styleSheet/smallScreen.css" media="screen and (max-width: 768px)">
     </head>
     <body>
         <header>
             <div class="content">
                 Witaj, user!
+                <nav>
+                    <a href="login.html">Wyloguj</a>
+                </nav>
             </div>
         </header>
-        <main>
+        <main class="user-view content">
             <!-- TOP - charts -->
-            <div class="content charts">
-                here goes charts
+            <div class="charts">
+                <!-- TODO: slider for charts for mobile view -->
+                <div>
+                    chart 1
+                </div>
+                <div class="hide-on-mobile">
+                    chart 2
+                </div>
             </div>
             <!-- BOTTOM - transcations' history-->
-            <div class="content transactions">
+            <div class="transactions">
                 <!-- table header and one transaction line -->
                 <table>
                     <thead>
                         <tr>
-                            <th>Data</th>
-                            <th>Typ transakcji</th>
+                            <th class="hide-on-mobile">Data</th>
+                            <th>Typ</th>
                             <th>Opis</th>
                             <th>Kwota</th>
-                            <th>Saldo</th>                           
+                            <th class="hide-on-mobile">Saldo</th>                           
                         </tr>
                     </thead>
                     <tbody>

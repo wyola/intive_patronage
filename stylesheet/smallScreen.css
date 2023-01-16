@@ -1,0 +1,35 @@
+/* ---------- CSS stylesheet for mobile - max-width 768px ---------- */
+
+/* -------- FORMS -------- */
+
+form {
+    width: 90%;
+}
+
+form div {
+    display: block;
+}
+
+form input {
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type=submit] {
+    background-color: brown;
+    border: none;
+    padding: 16px 32px;
+    cursor: pointer;
+    max-width: 100%;
+    margin: 0;
+}
+
+input[type=submit]:hover {
+    background-color: aquamarine;
+}
+
+/* -------- TRANSACTIONS -------- */
+
+.hide-on-mobile {
+    display: none;
+}
