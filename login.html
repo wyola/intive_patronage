@@ -2,7 +2,8 @@
 <html lang="pl">
     <head>
         <meta charset="utf-8">
-        <title>Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Logowanie</title>
         <!-- import font -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,24 +14,28 @@
     </head>
     <body>
         <header>
-            <div>
+            <div class="content">
                 <nav>
                     <a href="registration.html">Rejestracja</a>
                 </nav>
             </div>
         </header>
         <main>
-            <form action="/transactions.html" >
-                <div>
-                    <label for="user-name">nazwa użytkownika/e-mail:</label>
-                    <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" required>
-                </div>
-                <div>
-                    <label for="password">hasło:</label>
-                    <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" required>
-                </div>
-                <input type="submit" value="Zaloguj">
-            </form>
+            <div class="content form-container">
+                <form action="/transactions.html">
+                    <div>
+                        <label for="user-name">nazwa użytkownika/email:</label>
+                        <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" required>
+                    </div>
+                    <div>
+                        <label for="password">hasło:</label>
+                        <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Zaloguj">
+                    </div>
+                </form>
+            </div>
         </main>
     </body>
 </html>

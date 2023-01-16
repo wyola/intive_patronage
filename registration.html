@@ -2,7 +2,8 @@
 <html lang="pl">
     <head>
         <meta charset="utf-8">
-        <title>Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Rejestracja</title>
         <!-- import font -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,32 +14,36 @@
     </head>
     <body>
         <header>
-            <div>
+            <div class="content">
                 <nav>
                     <a href="login.html">Logowanie</a>
                 </nav>
             </div>
         </header>
         <main>
-            <form action="/transactions.html" >
-                <div>
-                    <label for="user-name">nazwa użytkownika:</label>
-                    <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" placeholder="między 6 a 16 znaków, litery i cyfry" required>
-                </div>
-                <div>
-                    <label for="password">hasło:</label>
-                    <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" placeholder="co najmniej 6 znaków" required>
-                </div>
-                <div>
-                    <label for="email">email:</label>
-                    <input type="email" id="email" name="email" placeholder="e-mail w formacie example@example.com" required>
-                </div>
-                <div>
-                    <label for="confirm-email">potwierdź email:</label>
-                    <input type="email" id="confirm-email" name="email" placeholder="powtórz adres email" required>
-                </div>
-                <input type="submit" value="Zarejestruj">
-            </form>
+            <div class="content form-container">
+                <form action="/transactions.html">
+                    <div>
+                        <label for="user-name">nazwa użytkownika:</label>
+                        <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" placeholder="między 6 a 16 znaków, litery i cyfry" required>
+                    </div>
+                    <div>
+                        <label for="password">hasło:</label>
+                        <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" placeholder="co najmniej 6 znaków" required>
+                    </div>
+                    <div>
+                        <label for="email">email:</label>
+                        <input type="email" id="email" name="email" placeholder="e-mail w formacie example@example.com" required>
+                    </div>
+                    <div>
+                        <label for="confirm-email">potwierdź email:</label>
+                        <input type="email" id="confirm-email" name="email" placeholder="powtórz adres email" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Zarejestruj">
+                    </div>
+                </form>
+            </div>
         </main>
     </body>
 </html>
