@@ -3,10 +3,10 @@ fetch('https://api.npoint.io/38edf0c5f3eb9ac768bd')
   .then((data) => renderTransactions(data.transactions, data.transacationTypes)); // typo! -> transacAtionTypes
 
 const icons = {
-  1: 'assets/transaction-icons/green-arrow.png',
-  2: 'assets/transaction-icons/grocery.png',
-  3: 'assets/transaction-icons/salary.png',
-  4: 'assets/transaction-icons/red-arrow.png'
+  1: 'assets/transaction-icons/income-other.png',
+  2: 'assets/transaction-icons/expense-shopping.png',
+  3: 'assets/transaction-icons/income.png',
+  4: 'assets/transaction-icons/expense.png'
 }
 
 function renderTransactions(transactions, transactionTypes) {

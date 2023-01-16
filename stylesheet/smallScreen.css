@@ -16,16 +16,8 @@ form input {
 }
 
 input[type=submit] {
-    background-color: brown;
-    border: none;
-    padding: 16px 32px;
-    cursor: pointer;
     max-width: 100%;
     margin: 0;
-}
-
-input[type=submit]:hover {
-    background-color: aquamarine;
 }
 
 /* -------- TRANSACTIONS -------- */
