@@ -43,6 +43,7 @@ function renderTransactions(transactions, transactionTypes) {
     tableBody.appendChild(mobileRow);
 
     const mobileRowView = document.createElement('td');
+    mobileRowView.classList.add("mobile-row");
     mobileRowView.colSpan = 5;    
     mobileRow.appendChild(mobileRowView);
 

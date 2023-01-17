@@ -117,7 +117,6 @@ main.user-view {
    width: 100%;
    align-items: center;
    justify-content: center;
-   border-bottom: 1px solid black;
 }
 
 .charts div {
@@ -132,17 +131,41 @@ main.user-view {
     width: 100%;
 }
 
-table, th, td {
-    border: 1px solid black;
+table {
+    margin-bottom: 10px;
     border-collapse: collapse;
+}
+
+th {
+    background-color: #482b81;
+    text-align: left;
+    color: white;
+    font-weight: 400;
+    padding: 10px 10px;
+}
+
+td {
+    text-align: left;
+    padding: 10px 10px;
+    border-bottom: 1px solid #482b81;
+}
+
+tr {
     background-color: white;
 }
 
-th, td {
-    text-align: left;
-    padding: 10px 10px;
+tr:nth-child(odd) td {
+    border-bottom: none;
 }
 
 .transaction-icon {
     text-align: center;
+}
+
+.mobile-row {
+    display: none;
+}
+
+.mobile-row > div {
+    margin-bottom: 10px;
 }
