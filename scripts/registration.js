@@ -58,7 +58,7 @@ function validateForm() {
     }
 
     if (form.elements.email.value !== form.elements.confirmEmail.value) {
-        displayError(form.elements.confirmEmail, 'wpisz ten sam email co powyżej')
+        displayError(form.elements.confirmEmail, 'adresy email muszą być takie same')
         isFormValid = false;
     }
 
