@@ -104,6 +104,18 @@ input[type=submit]:hover {
     background-color: #482b81;
 }
 
+.error-message {
+    text-align: right;
+    display: block;
+    margin-top: -10px;
+    font-size: 0.8rem;
+    color: red;
+}
+
+.invalid {
+    border: 1px solid red;
+}
+
 /* -------- TRANSACTIONS -------- */
 
 main.user-view {

@@ -20,6 +20,10 @@ input[type=submit] {
     margin: 0;
 }
 
+.error-message {
+    text-align: left;
+}
+
 /* -------- TRANSACTIONS -------- */
 
 .hide-on-mobile {

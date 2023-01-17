@@ -25,14 +25,14 @@
             <h1>
                 Logowanie
             </h1>
-            <form action="/transactions.html">
+            <form>
                 <div>
                     <label for="user-name">nazwa użytkownika/email:</label>
-                    <input type="text" id="user-name" name="email" minlength="6" maxlength="16" pattern="[[:alnum:]]+" required>
+                    <input type="text" id="user-name" name="user-name" minlength="6" maxlength="16" pattern="[a-zA-Z0-9]+" required>
                 </div>
                 <div>
                     <label for="password">hasło:</label>
-                    <input type="password" id="password" name="email" minlength="6" pattern="[[:alnum:]]+" required>
+                    <input type="password" id="password" name="password" minlength="6" pattern="[a-zA-Z0-9]+" required>
                 </div>
                 <div>
                     <input type="submit" value="zaloguj &#129046;">
