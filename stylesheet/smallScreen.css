@@ -25,3 +25,7 @@ input[type=submit] {
 .hide-on-mobile {
     display: none;
 }
+
+.mobile-row > div {
+    margin-bottom: 10px;
+}

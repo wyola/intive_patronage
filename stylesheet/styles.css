@@ -158,14 +158,6 @@ tr:nth-child(odd) td {
     border-bottom: none;
 }
 
-.transaction-icon {
-    text-align: center;
-}
-
 .mobile-row {
     display: none;
-}
-
-.mobile-row > div {
-    margin-bottom: 10px;
 }
