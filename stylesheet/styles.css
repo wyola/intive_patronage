@@ -143,6 +143,16 @@ input[type=submit]:hover {
     color: red;
 }
 
+.field-message:not(.error-message) {
+    color: green;
+    border: 1px solid green;
+    width: 100%;
+    padding: 16px 32px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
 .invalid {
     border: 1px solid red;
 }

@@ -1,3 +1,12 @@
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+if(!currentUser) {
+  location = 'login.html';
+}
+else {
+  document.querySelector('header .content span').innerText = currentUser.user;
+}
+
 fetch('https://api.npoint.io/38edf0c5f3eb9ac768bd')
   .then((response) => response.json())
   .then((data) => renderTransactions(data.transactions, data.transacationTypes)); // typo! -> transacAtionTypes
