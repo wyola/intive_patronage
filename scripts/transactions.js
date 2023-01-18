@@ -23,6 +23,8 @@ function renderTransactions(transactions, transactionTypes) {
 
   for (const transaction of transactions) {
     const dataRow = document.createElement('tr');
+    dataRow.classList.add("main-row");
+    dataRow.addEventListener('click', openRow);
     tableBody.appendChild(dataRow);
 
     const dateCell = document.createElement('td');
@@ -36,7 +38,16 @@ function renderTransactions(transactions, transactionTypes) {
     dataRow.appendChild(iconCell);
 
     const descriptionCell = document.createElement('td');
-    descriptionCell.innerText = transaction.description;
+        
+    const description = document.createElement('div');
+    description.innerHTML = transaction.description;
+    descriptionCell.appendChild(description);
+
+    const type = document.createElement('div');
+    type.innerHTML = transactionTypes[transaction.type];
+    type.classList.add('transaction-type', 'hide-on-mobile')
+    descriptionCell.appendChild(type);
+
     dataRow.appendChild(descriptionCell);
 
     const amountCell = document.createElement('td');
@@ -49,10 +60,10 @@ function renderTransactions(transactions, transactionTypes) {
     dataRow.appendChild(balanceCell);
 
     const mobileRow = document.createElement('tr');
+    mobileRow.classList.add("mobile-row");
     tableBody.appendChild(mobileRow);
 
     const mobileRowView = document.createElement('td');
-    mobileRowView.classList.add("mobile-row");
     mobileRowView.colSpan = 5;    
     mobileRow.appendChild(mobileRowView);
 
@@ -63,5 +74,22 @@ function renderTransactions(transactions, transactionTypes) {
     const mobileRowBalance = document.createElement('div');
     mobileRowBalance.innerText = `Saldo: ${transaction.balance}`;
     mobileRowView.appendChild(mobileRowBalance);
+
+    const mobileRowType = document.createElement('div');
+    mobileRowType.innerText = `Typ: ${transactionTypes[transaction.type]}`;
+    mobileRowView.appendChild(mobileRowType);
   }
-}  
+}
+
+function openRow(event) {
+  const row = event.currentTarget;
+
+  const openRows = document.getElementsByClassName('mobile-row-show')
+
+  for(const openRow of openRows) {
+    if (openRow !== row.nextSibling) {
+      openRow.classList.remove('mobile-row-show');
+    }
+  }
+  row.nextSibling.classList.toggle('mobile-row-show');
+}

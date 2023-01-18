@@ -33,3 +33,7 @@ input[type=submit] {
 .mobile-row > div {
     margin-bottom: 10px;
 }
+
+.mobile-row-show {
+    display: table-row;
+}

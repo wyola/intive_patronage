@@ -159,6 +159,11 @@ input[type=submit]:hover {
 
 /* -------- TRANSACTIONS -------- */
 
+header .logout {
+    justify-content: flex-end;
+    gap: 10px;
+}
+
 main.user-view {
     height: calc(100vh - 74px); /* 74px is header's height */
 }
@@ -207,10 +212,19 @@ tr {
     background-color: white;
 }
 
+.transaction-type {
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
 tr:nth-child(odd) td {
     border-bottom: none;
 }
 
 .mobile-row {
     display: none;
+}
+
+.mobile-row div:not(:last-child) {
+    margin-bottom: 5px;
 }
