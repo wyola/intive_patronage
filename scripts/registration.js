@@ -15,6 +15,7 @@ function clearError(event) {
 }
 
 function displayError(input, errorMessage) {
+    clearError({target: input});
     const error = document.createElement('div');
     error.classList.add('error-message');
     error.innerText = errorMessage;
@@ -23,27 +24,20 @@ function displayError(input, errorMessage) {
     input.classList.add('invalid');
 }
 
-let users = [
-    {
-        user: 'wyola123',
-        email: 'wyola@gmail.com',
-        password: 'Test123'
-    },
-    {
-        user: 'michal123',
-        email: 'michal@gmail.com',
-        password: 'Michal123'
-    },
-    {
-        user: 'rico123',
-        email: 'rico@gmail.com',
-        password: 'Rico123'
-    },
-]
+function getUsers() {
+    let users = JSON.parse(localStorage.getItem('users'));
 
+    if (!Array.isArray(users)) {
+        users = [];
+    }
+
+    return users;
+}
 
 function validateForm() {
     let isFormValid = true;
+
+    const users = getUsers();
 
     for(const user of users) {
         if(user.email === form.elements.email.value) {
@@ -66,15 +60,27 @@ function validateForm() {
 }
 
 function registerUser() {
-    // JSON.stringify()
-    // JSON.parse()
+
+    const users = getUsers();
+
+    const user = {
+        user: form.elements.userName.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value
+    }
+
+    users.push(user);
+
+    localStorage.setItem('users', JSON.stringify(users));
+
+    console.log(users);
 }
 
 
 function handleSubmit(event) {
     event.preventDefault();
-    console.log('test');
-    const {userName, password, email, confirmEmail} = event.target.elements;
 
-    validateForm();
+    if (validateForm()) {
+        registerUser();
+    }
 }

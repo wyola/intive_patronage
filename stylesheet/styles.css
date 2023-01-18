@@ -81,15 +81,11 @@ p {
     display: flex;
     flex-direction: column;
     padding: 0 20px;
+    text-align: center;
 }
 
 .welcome-text h1 {
     font-size: 3rem;
-    text-align: center;
-}
-
-.welcome-text p {
-    text-align: center;
 }
 
 /* -------- FORMS -------- */
