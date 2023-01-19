@@ -1,40 +1,35 @@
 const form = document.getElementsByTagName('form')[0];
-form.addEventListener('submit', validateLogin);
+form.addEventListener('submit', tryLogin);
 
 for (const input of form.elements) {
     input.addEventListener('keydown', clearMessage);
 }
 
-function validateLogin(event) {
+function tryLogin(event) {
     event.preventDefault();
-
-    let isFormValid = false;
-
     const users = getUsers();
 
-    for(const user of users) {
-
-        if((form.elements.login.value === user.user || form.elements.login.value === user.email) &&
-            hashPassword(form.elements.password.value) === user.password) {
-                isFormValid = true;
-                loginUser(user);
-                return user;
-            } 
+    for (const user of users) {
+        if (
+            (form.elements.login.value === user.user || form.elements.login.value === user.email) &&
+            hashPassword(form.elements.password.value) === user.password
+        ) {
+            loginUser(user);
+            return;
+        } 
     }
 
     let userExists = false;
-    for(const user of users) {
-        if(form.elements.login.value === user.user || form.elements.login.value === user.email) {
+    for (const user of users) {
+        if (form.elements.login.value === user.user || form.elements.login.value === user.email) {
             userExists = true;
             break;
         }
     }
 
-    if(userExists) {
+    if (userExists) {
         displayMessage(form.elements.password, 'niepoprawne hasło');
-    }
-    else {
+    } else {
         displayMessage(form.elements.login, 'użytkownik nie istnieje - zarejestruj się!', false);
     }
-    return isFormValid;
 }

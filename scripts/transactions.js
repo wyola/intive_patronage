@@ -1,6 +1,6 @@
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-if(!currentUser) {
+if (!currentUser) {
   location = 'login.html';
 }
 else {
@@ -94,7 +94,7 @@ function openRow(event) {
 
   const openRows = document.getElementsByClassName('mobile-row-show')
 
-  for(const openRow of openRows) {
+  for (const openRow of openRows) {
     if (openRow !== row.nextSibling) {
       openRow.classList.remove('mobile-row-show');
     }
@@ -117,8 +117,8 @@ function doughnutChart(transactions, transactionTypes) {
   const types = Object.values(transactionTypes);
   const transactionCounts = (new Array(types.length)).fill(0);
 
-  for(const transaction of transactions) {
-      transactionCounts[transaction.type - 1]++;
+  for (const transaction of transactions) {
+    transactionCounts[transaction.type - 1]++;
   }
 
   new Chart(
@@ -180,7 +180,7 @@ function barChart(transactions) {
   const balances = [];
 
   let lastCheckedDate = '';
-  for(const transaction of transactions) {
+  for (const transaction of transactions) {
     if (lastCheckedDate !== transaction.date) {      
       uniqueDates.push(transaction.date);
       balances.push(transaction.balance);

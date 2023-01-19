@@ -11,9 +11,11 @@ function displayMessage(input, message, isError = true) {
     clearMessage({target: input});
     const messageElement = document.createElement('div');
     messageElement.classList.add('field-message');
-    if(isError) {
+
+    if (isError) {
         messageElement.classList.add('error-message');
     }
+    
     messageElement.innerText = message;
     input.parentNode.after(messageElement);
     input.classList.add('invalid');
