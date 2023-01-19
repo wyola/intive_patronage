@@ -30,6 +30,25 @@ input[type=submit] {
     display: none;
 }
 
+.charts {
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.charts::-webkit-scrollbar {
+    display: none;
+}
+
+.charts div {
+    width: 100%;
+    flex-shrink: 0;
+    flex-basis: 100%;
+}
+/* 
+.charts div.hide-on-mobile {
+    display: none;
+} */
+
 .mobile-row > div {
     margin-bottom: 10px;
 }

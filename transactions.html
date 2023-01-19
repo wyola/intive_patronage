@@ -11,7 +11,8 @@
         <!-- import CSS-->
         <link rel="stylesheet" href="styleSheet/styles.css">
         <link rel="stylesheet" href="styleSheet/smallScreen.css" media="screen and (max-width: 768px)">
-    </head>
+        <!-- import Chart.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js" integrity="sha512-KTyzZ0W6S8dUq9WIt8fSflj2ArYRGcGNIU5QcB1skGGd1EPFMupHZSexEsFFX18tZK4eO0iGGSZGuyrNIqjV8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    </head>
     <body>
         <header>
             <div class="content logout">
@@ -26,10 +27,10 @@
             <div class="charts">
                 <!-- TODO: slider for charts for mobile view -->
                 <div>
-                    chart 1
+                    <canvas id="doughnut-chart"></canvas>
                 </div>
                 <div class="hide-on-mobile">
-                    chart 2
+                    <canvas id="bar-chart"></canvas>
                 </div>
             </div>
             <!-- BOTTOM - transcations' history-->

@@ -9,14 +9,17 @@ else {
 
 fetch('https://api.npoint.io/38edf0c5f3eb9ac768bd')
   .then((response) => response.json())
-  .then((data) => renderTransactions(data.transactions, data.transacationTypes)); // typo! -> transacAtionTypes
+  .then((data) => {
+    renderTransactions(data.transactions, data.transacationTypes); // typo in data! -> transacAtionTypes
+    renderCharts(data.transactions, data.transacationTypes);
+  }); 
 
 const icons = {
   1: 'assets/transaction-icons/income-other.png',
   2: 'assets/transaction-icons/expense-shopping.png',
   3: 'assets/transaction-icons/income.png',
   4: 'assets/transaction-icons/expense.png'
-}
+};
 
 function renderTransactions(transactions, transactionTypes) {
   const tableBody = document.getElementsByTagName('tbody')[0];
@@ -93,3 +96,150 @@ function openRow(event) {
   }
   row.nextSibling.classList.toggle('mobile-row-show');
 }
+
+// --- CHARTS --- //
+
+function renderCharts(transactions, transactionTypes) {
+
+  doughnutChart(transactions, transactionTypes);
+  barChart(transactions)
+
+}
+
+function doughnutChart(transactions, transactionTypes) {
+  
+  const types = Object.values(transactionTypes);
+
+  const transactionCounts = (new Array(types.length)).fill(0);
+  console.log(transactionCounts);
+
+  for(const transaction of transactions) {
+      transactionCounts[transaction.type - 1]++;
+  }
+
+  new Chart(
+    document.getElementById('doughnut-chart'),
+    {
+      type: 'doughnut',
+      data: {
+        labels: types,
+        datasets: [{
+          label: 'Udział transakcji',
+          data: transactionCounts.map( count => count / transactions.length),
+          backgroundColor: [
+            'rgb(101,177,117)',
+            'rgb(174,36,99)',
+            'rgb(0 151 192)',
+            'rgb(0 58 192)',
+          ],
+          hoverOffset: 12
+        }]
+      },
+      options: {
+        plugins: {
+          tooltip: {
+            callbacks: {
+                label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.parsed !== null) {
+                        label += `${(context.parsed * 100).toFixed(2)}%`;
+                    }
+                    return label;
+                }
+            }
+          },
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Procentowy podział typów transakcji',
+            color: 'white'
+          }
+        }
+      }
+    }
+  );
+}
+
+function barChart(transactions) {
+
+  const uniqueDates = [];
+  const balances = [];
+
+  let lastCheckedDate = '';
+  for(const transaction of transactions) {
+    if (lastCheckedDate !== transaction.date) {      
+      uniqueDates.push(transaction.date);
+      balances.push(transaction.balance);
+      lastCheckedDate = transaction.date;
+    }
+  }
+
+  console.log(uniqueDates);
+  console.log(balances);
+
+  new Chart(
+    document.getElementById('bar-chart'),
+    {
+      type: 'bar',
+      data: {
+        labels: uniqueDates,
+        datasets: [{
+          label: 'Saldo',
+          data: balances,
+          backgroundColor: 'green',
+          borderColor: 'white',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Saldo konta na koniec dnia',
+            color: 'white'
+          },
+        },
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            grid: {
+              color: 'white',
+            },
+            title: {
+              display: true,
+              color: 'white',
+              text: 'dzień',
+            },
+            ticks: {
+              color: 'white',
+            }
+          },
+          y: {
+            grid: {
+              color: 'white',
+            },
+            title: {
+              display: true,
+              color: 'white',
+              text: 'saldo',
+            },
+            ticks: {
+              color: 'white',
+            }
+          }
+        }
+      }      
+    }
+  );
+}
+
+
+ 

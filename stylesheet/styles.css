@@ -173,12 +173,13 @@ main.user-view {
    display: flex;
    flex-direction: row;
    width: 100%;
-   align-items: center;
-   justify-content: center;
 }
 
 .charts div {
     flex: 1;
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
 }
 
 .transactions {
