@@ -28,11 +28,11 @@
             <form>
                 <div>
                     <label for="user-name">nazwa użytkownika:</label>
-                    <input type="text" id="user-name" name="userName" minlength="6" maxlength="16" pattern="[a-zA-Z0-9]+" placeholder="od 6 do 16 znaków, litery i cyfry, bez spacji" required>
+                    <input type="text" id="user-name" name="userName" minlength="6" maxlength="16" pattern="[A-Za-z0-9\-_\[\]\\/]+" placeholder="min. 5 liter i 1 cyfra, dop. znaki: - _ [ ] \ /" required>
                 </div>
                 <div>
                     <label for="password">hasło:</label>
-                    <input type="password" id="password" name="password" minlength="6" pattern="[a-zA-Z0-9]+" placeholder="co najmniej 6 znaków, litery i cyfry" required>
+                    <input type="password" id="password" name="password" minlength="6" pattern="[a-zA-Z0-9]+" placeholder="min. 6 znaków, litery i cyfry" required>
                 </div>
                 <div>
                     <label for="email">email:</label>
