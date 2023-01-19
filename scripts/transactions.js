@@ -11,8 +11,25 @@ fetch('https://api.npoint.io/38edf0c5f3eb9ac768bd')
   .then((response) => response.json())
   .then((data) => {
     renderTransactions(data.transactions, data.transacationTypes); // typo in data! -> transacAtionTypes
+    
+    // test if negative values are shown on bar chart - delete later!! /////////////
+    console.log(data.transactions);
+
+    data.transactions.push({
+      date: '2022-11-13',
+      type: 2,
+      amount: 35,
+      balance: -900,
+      description: 'blabla',
+    })
+
+    console.log(data.transactions)
+    /////////////////////////////////////////////////////////////////////
     renderCharts(data.transactions, data.transacationTypes);
-  }); 
+
+  });
+
+
 
 const icons = {
   1: 'assets/transaction-icons/income-other.png',
@@ -20,6 +37,8 @@ const icons = {
   3: 'assets/transaction-icons/income.png',
   4: 'assets/transaction-icons/expense.png'
 };
+
+
 
 function renderTransactions(transactions, transactionTypes) {
   const tableBody = document.getElementsByTagName('tbody')[0];
@@ -105,12 +124,12 @@ function renderCharts(transactions, transactionTypes) {
   barChart(transactions)
 }
 
+// --- doughnut chart --- //
+
 function doughnutChart(transactions, transactionTypes) {
   
   const types = Object.values(transactionTypes);
-
   const transactionCounts = (new Array(types.length)).fill(0);
-  console.log(transactionCounts);
 
   for(const transaction of transactions) {
       transactionCounts[transaction.type - 1]++;
@@ -167,6 +186,8 @@ function doughnutChart(transactions, transactionTypes) {
   );
 }
 
+// --- bar chart --- //
+
 function barChart(transactions) {
 
   const uniqueDates = [];
@@ -181,8 +202,7 @@ function barChart(transactions) {
     }
   }
 
-  console.log(uniqueDates);
-  console.log(balances);
+  const barColors = balances.map(value => value >= 0 ? 'green' : 'red');
 
   new Chart(
     document.getElementById('bar-chart'),
@@ -193,9 +213,9 @@ function barChart(transactions) {
         datasets: [{
           label: 'Saldo',
           data: balances,
-          backgroundColor: 'green',
+          backgroundColor: barColors,
           borderColor: 'white',
-          borderWidth: 2
+          borderWidth: 2,
         }]
       },
       options: {
@@ -214,6 +234,7 @@ function barChart(transactions) {
           x: {
             grid: {
               color: 'white',
+              zeroLineWidth: 10,
             },
             title: {
               display: true,
@@ -222,7 +243,7 @@ function barChart(transactions) {
             },
             ticks: {
               color: 'white',
-            }
+            },
           },
           y: {
             grid: {
@@ -235,7 +256,7 @@ function barChart(transactions) {
             },
             ticks: {
               color: 'white',
-            }
+            },
           }
         }
       }      
