@@ -5,6 +5,12 @@ for (const input of form.elements) {
     input.addEventListener('keydown', clearMessage);
 }
 
+const dataLinks = [
+    'https://api.npoint.io/38edf0c5f3eb9ac768bd',
+    'https://api.npoint.io/b67529eeab508d2e8f94',
+    'https://api.npoint.io/3b0bffd5eea7f572ab19'
+]
+
 function validateForm() {
     let isFormValid = true;
 
@@ -62,7 +68,8 @@ function registerUser() {
     const user = {
         user: form.elements.userName.value,
         email: form.elements.email.value,
-        password: form.elements.password.value
+        password: form.elements.password.value,
+        dataLink: dataLinks[Math.floor((Math.random() * dataLinks.length))]
     }
 
     users.push(user);

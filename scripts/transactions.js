@@ -7,29 +7,15 @@ else {
   document.querySelector('header .content span').innerText = currentUser.user;
 }
 
-fetch('https://api.npoint.io/38edf0c5f3eb9ac768bd')
+const defaultDataLink = 'https://api.npoint.io/38edf0c5f3eb9ac768bd';
+const dataLink = currentUser.dataLink || defaultDataLink;
+
+fetch(dataLink)
   .then((response) => response.json())
   .then((data) => {
     renderTransactions(data.transactions, data.transacationTypes); // typo in data! -> transacAtionTypes
-    
-    // test if negative values are shown on bar chart - delete later!! /////////////
-    console.log(data.transactions);
-
-    data.transactions.push({
-      date: '2022-11-13',
-      type: 2,
-      amount: 35,
-      balance: -900,
-      description: 'blabla',
-    })
-
-    console.log(data.transactions)
-    /////////////////////////////////////////////////////////////////////
     renderCharts(data.transactions, data.transacationTypes);
-
   });
-
-
 
 const icons = {
   1: 'assets/transaction-icons/income-other.png',
@@ -38,11 +24,11 @@ const icons = {
   4: 'assets/transaction-icons/expense.png'
 };
 
-
+const currencyFormatter = new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'PLN', maximumFractionDigits: 2, minimumFractionDigits: 2 });
 
 function renderTransactions(transactions, transactionTypes) {
   const tableBody = document.getElementsByTagName('tbody')[0];
-
+  
   for (const transaction of transactions) {
     const dataRow = document.createElement('tr');
     dataRow.classList.add("main-row");
@@ -73,12 +59,12 @@ function renderTransactions(transactions, transactionTypes) {
     dataRow.appendChild(descriptionCell);
 
     const amountCell = document.createElement('td');
-    amountCell.innerText = transaction.amount;
+    amountCell.innerText = currencyFormatter.format(transaction.amount);
     dataRow.appendChild(amountCell);
 
     const balanceCell = document.createElement('td');
     balanceCell.classList.add("hide-on-mobile");
-    balanceCell.innerText = transaction.balance;
+    balanceCell.innerText = currencyFormatter.format(transaction.balance);
     dataRow.appendChild(balanceCell);
 
     const mobileRow = document.createElement('tr');
@@ -94,7 +80,7 @@ function renderTransactions(transactions, transactionTypes) {
     mobileRowView.appendChild(mobileRowDate);
 
     const mobileRowBalance = document.createElement('div');
-    mobileRowBalance.innerText = `Saldo: ${transaction.balance}`;
+    mobileRowBalance.innerText = `Saldo: ${currencyFormatter.format(transaction.balance)}`;
     mobileRowView.appendChild(mobileRowBalance);
 
     const mobileRowType = document.createElement('div');
@@ -209,11 +195,11 @@ function barChart(transactions) {
     {
       type: 'bar',
       data: {
-        labels: uniqueDates,
+        labels: uniqueDates.reverse(),
         datasets: [{
           label: 'Saldo',
-          data: balances,
-          backgroundColor: barColors,
+          data: balances.reverse(),
+          backgroundColor: barColors.reverse(),
           borderColor: 'white',
           borderWidth: 2,
         }]
@@ -262,7 +248,4 @@ function barChart(transactions) {
       }      
     }
   );
-}
-
-
- 
+} 

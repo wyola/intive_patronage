@@ -22,7 +22,6 @@ function validateLogin(event) {
             } 
     }
 
-    // user and password not found - check if password is correct OR if there is a user with given username/email
     let userExists = false;
     for(const user of users) {
         if(form.elements.login.value === user.user || form.elements.login.value === user.email) {

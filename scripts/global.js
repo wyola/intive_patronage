@@ -1,4 +1,3 @@
-
 function clearMessage(event) {
     const input = event.target;
 
