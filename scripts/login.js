@@ -15,7 +15,7 @@ function validateLogin(event) {
     for(const user of users) {
 
         if((form.elements.login.value === user.user || form.elements.login.value === user.email) &&
-            form.elements.password.value === user.password) {
+            hashPassword(form.elements.password.value) === user.password) {
                 isFormValid = true;
                 loginUser(user);
                 return user;

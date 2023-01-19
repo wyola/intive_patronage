@@ -68,7 +68,7 @@ function registerUser() {
     const user = {
         user: form.elements.userName.value,
         email: form.elements.email.value,
-        password: form.elements.password.value,
+        password: hashPassword(form.elements.password.value),
         dataLink: dataLinks[Math.floor((Math.random() * dataLinks.length))]
     }
 

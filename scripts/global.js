@@ -33,3 +33,7 @@ function loginUser(user) {
     localStorage.setItem('currentUser', JSON.stringify(user));
     location = 'transactions.html';
 }
+
+function hashPassword(password) {
+    return btoa(password);
+}
