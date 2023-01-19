@@ -103,7 +103,6 @@ function renderCharts(transactions, transactionTypes) {
 
   doughnutChart(transactions, transactionTypes);
   barChart(transactions)
-
 }
 
 function doughnutChart(transactions, transactionTypes) {
@@ -159,6 +158,9 @@ function doughnutChart(transactions, transactionTypes) {
             text: 'Procentowy podział typów transakcji',
             color: 'white'
           }
+        },
+        layout: {
+          padding: 10
         }
       }
     }

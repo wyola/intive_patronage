@@ -44,10 +44,6 @@ input[type=submit] {
     flex-shrink: 0;
     flex-basis: 100%;
 }
-/* 
-.charts div.hide-on-mobile {
-    display: none;
-} */
 
 .mobile-row > div {
     margin-bottom: 10px;
